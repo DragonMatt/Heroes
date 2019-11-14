@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Heroes</string>
+    <string name="Rank">#</string>
+    <string name="Description">Description</string>
+    <string name="Name">Name: </string>
+    <string name="HeroRank">Rank #</string>
+    <string name="Superpower">Superpower: </string>
+</resources>

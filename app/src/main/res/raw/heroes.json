@@ -1,0 +1,79 @@
+[ 
+   	{ 
+    	"name":"Batman",
+    	"description":"Half man, half baseball bat. Has a heartwood of gold.",
+    	"superpower":"Swings into action without hesitation. Can survive with wood instead of internal organs.",
+    	"rank":"1533",
+    	"image":"batman"
+   },
+   { 
+		"name":"Catman",
+		"description":"1/3 man (the torso), 2/3 cat.",
+		"superpower":"Has 6 lives.",
+		"rank":"17",
+		"image":"catman"
+   },
+   {
+   		"name":"Hatman",
+		"description":"A connoisseur of all hats, big and small.",
+		"superpower":"Can instantaneously tell how large a hat is by smell or taste.",
+		"rank":"4134",
+		"image":"hatman"
+   },
+   {
+   		"name":"Flatman",
+		"description":"Quarter construction paper on his mother's side.",
+		"superpower":"Can slide under doors but is defeated by scissors",
+		"rank":"1234",
+		"image":"flatman"
+   },
+   {
+   		"name":"Matman",
+		"description":"Has a skin of tough, waterproof fibers.",
+		"superpower":"Efficiently cleans people's shoes before entering a house.",
+		"rank":"5000",
+		"image":"doormat"
+   },
+   {
+   		"name":"B-Flatwoman",
+		"description":"Computer programmer by day, musician by night.",
+		"superpower":"Has perfect pitch but only for B-Flat.",
+		"rank":"52",
+		"image":"programmer"
+   },
+   {
+   		"name":"Formatwoman",
+		"description":"A doer of deeds and other documents.",
+		"superpower":"Can complete formats before autocomplete ruins everything.",
+		"rank":"2",
+		"image":"format"
+   },
+   {
+   		"name":"The Aristocrat",
+		"description":"Has 0th world problems.",
+		"superpower":"Can use more resources in a lifetime than a million regular people.",
+		"rank":"1000000000",
+		"image":"aristocrat"
+   },
+   {
+   		"name":"The Acrobat",
+		"description":"They have an uncanny sense of balance.",
+		"superpower":"Is unaffected by the feeling of falling and catching yourself when lying down half-asleep",
+		"rank":"1",
+		"image":"sleeping"
+   },
+	{
+		"name":"The Diplomat",
+		"description":"Your typical Gen Z teen but with one huge advantage.",
+		"superpower":"When their parents are arguing in a restaurant, The Diplomat does not feel awkward and can divert the server's attention.",
+		"rank":"17",
+		"image":"facepalm"
+	},
+	{
+		"name":"Saitama",
+		"description":"Just an ordinary guy",
+		"superpower":"punches hard",
+		"rank":"1",
+		"image":"saitama"
+	}
+]
