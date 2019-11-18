@@ -66,14 +66,14 @@
 		"name":"The Diplomat",
 		"description":"Your typical Gen Z teen but with one huge advantage.",
 		"superpower":"When their parents are arguing in a restaurant, The Diplomat does not feel awkward and can divert the server's attention.",
-		"rank":"17",
+		"rank":"18",
 		"image":"facepalm"
 	},
 	{
 		"name":"Saitama",
 		"description":"Just an ordinary guy",
 		"superpower":"punches hard",
-		"rank":"1",
+		"rank":"-1",
 		"image":"saitama"
 	}
 ]

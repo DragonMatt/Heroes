@@ -14,7 +14,6 @@ public class HeroDetailActivity extends AppCompatActivity {
     private TextView textViewSuperpower;
     private TextView textViewRank;
     private ImageView imageViewImage;
-    private Hero hero;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,14 +29,15 @@ public class HeroDetailActivity extends AppCompatActivity {
         textViewDescription.setText("Description: " + hero.getDescription());
         textViewSuperpower.setText("Superpower: " + hero.getSuperpower());
         textViewRank.setText("Rank #" + hero.getRank());
-//        imageViewImage.setImageResource(hero.get);
-    }
+        int resourceImage = getResources().getIdentifier(hero.getImage(), "drawable", getPackageName());
+        imageViewImage.setImageDrawable(getResources().getDrawable(resourceImage));
+                }
 
-    private void wireWidgets() {
+private void wireWidgets() {
         textViewName = findViewById(R.id.textView_heroDetail_name);
         textViewDescription = findViewById(R.id.textView_heroDetail_description);
         textViewSuperpower = findViewById(R.id.textView_heroDetail_superpower);
         textViewRank = findViewById(R.id.textView_heroDetail_rank);
         imageViewImage = findViewById(R.id.imageView_heroDetail_image);
-    }
+        }
 }

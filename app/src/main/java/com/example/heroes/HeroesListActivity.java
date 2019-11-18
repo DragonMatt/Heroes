@@ -7,12 +7,16 @@ import android.os.Bundle;
 import android.os.Parcelable;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.gson.Gson;
 
@@ -20,6 +24,8 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Arrays;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 
@@ -27,6 +33,7 @@ public class HeroesListActivity extends AppCompatActivity {
 
     private ListView list;
     List<Hero> heroesList;
+    HeroAdapter heroAdapter;
 
     public static final String EXTRA_HERO = "hero";
 
@@ -48,8 +55,66 @@ public class HeroesListActivity extends AppCompatActivity {
         heroesList = Arrays.asList(heroes);
         Log.d(TAG, "onCreate: " + heroesList.toString());
 
-        HeroAdapter heroAdapter = new HeroAdapter(heroesList);
+        heroAdapter = new HeroAdapter(heroesList);
         list.setAdapter(heroAdapter);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu_heroeslist_sorting, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle item selection
+        switch (item.getItemId()) {
+            case R.id.action_heroeslist_sort_by_rank:
+                SortByRank();
+                Log.d(TAG, "SortByRank: SortByRank");
+                heroAdapter.notifyDataSetChanged();
+                return true;
+            case R.id.action_heroeslist_sort_by_name:
+                SortByName();
+                Log.d(TAG, "SortByName: SortByName");
+                heroAdapter.notifyDataSetChanged();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
+    private void SortByRank() {
+        // 1. extract the list from the adapter -> heroadapter.heroeslist
+        Collections.sort(heroesList, new Comparator<Hero>() {
+            @Override
+            public int compare(Hero hero, Hero t1) {
+                // negative number if thing comes before t1
+                // 0 if thing and t1 are the same
+                // positive number if thing comes after t1
+                return hero.getRank() - t1.getRank();
+            }
+        });
+        // the data in the adapter has changed, but it isn't aware
+        // call the method notifyDataSetChanged on the adapter.
+
+        Toast.makeText(this, "Sort by rank clicked", Toast.LENGTH_SHORT);
+    }
+
+    private void SortByName() {
+        // 1. extract the list from the adapter -> heroadapter.heroeslist
+        Collections.sort(heroesList, new Comparator<Hero>() {
+            @Override
+            public int compare(Hero hero, Hero t1) {
+                 return hero.getName().toLowerCase()
+                        .compareTo(t1.getName().toLowerCase());
+            }
+        });
+        // the data in the adapter has changed, but it isn't aware
+        // call the method notifyDataSetChanged on the adapter.
+
+        Toast.makeText(this, "Sort by name clicked", Toast.LENGTH_SHORT);
     }
 
     private void wireWidgets() {
@@ -59,10 +124,9 @@ public class HeroesListActivity extends AppCompatActivity {
     private void setListeners() {
         list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                int hero = list.getCheckedItemPosition();
+            public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
                 Intent targetIntent = new Intent(HeroesListActivity.this, HeroDetailActivity.class);
-                targetIntent.putExtra(EXTRA_HERO, heroesList.get(hero + 1));
+                targetIntent.putExtra(EXTRA_HERO, heroesList.get(position));
                 startActivity(targetIntent);
                 finish();
             }
@@ -85,6 +149,11 @@ public class HeroesListActivity extends AppCompatActivity {
         }
         return outputStream.toString();
     }
+
+//    Collections.sort(heroList, new Comparator() {
+//        // use the autocomplete when typing new Comparator() { ... }
+//        // overrides compare method
+//    }
 
     private class HeroAdapter extends ArrayAdapter<Hero> {
         // make an instance variable to keep track of the hero list

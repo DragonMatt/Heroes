@@ -9,6 +9,15 @@ public class Hero implements Parcelable {
     private String description;
     private String superpower;
     private int rank;
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+
     private String image;
 
     public Hero() {
